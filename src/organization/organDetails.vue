@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:40:58
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 10:47:23
+ * @LastEditTime: 2019-10-30 21:23:38
  -->
 <template>
   <div>
@@ -32,15 +32,24 @@
           style="color:#333; margin: 0 100px;"
         >
           <div class="well">
-            <div>
+            <!-- <div>
               <el-image
                 style="width: 100%; height: 400px; margin: 10px auto;"
                 :src="organ.logoLink"
               ></el-image>
+            </div> -->
+            <div v-for="(item, index) in pictures" :key="index">
+              <el-image
+                style="width: 650px; height: 500px; margin: 0 auto"
+                :src="axios.defaults.baseURL+item"
+              ></el-image>
             </div>
           </div>
           <!--  <el-form-item label="父级管理id :">{{organ.fathId}}</el-form-item> -->
-          <el-form-item label="介绍 :">{{organ.intro}}</el-form-item>
+          <el-form-item label="名称 :">{{organ.intro}}</el-form-item>
+          <el-form-item label="专业 :">{{organ.collage}}</el-form-item>
+          <el-form-item label="介绍 :">{{organ.name}}</el-form-item>
+          
         </el-form>
       </el-card>
       <!-- -->
@@ -54,6 +63,7 @@ export default {
 
   data() {
     return {
+      pictures:[],
       organ: ""
     };
   },
@@ -71,6 +81,7 @@ export default {
       this.axios.get("/organization/" + id).then(response => {
         //console.log(response.data.data.data);
         this.organ = response.data.data;
+        this.pictures = this.organ.logoLink.split("|");
       });
     },
 
@@ -83,31 +94,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.btnStyle {
-  height: 25px;
-  padding-top: 8px;
-  padding-bottom: 19px;
-  margin: 10px 0;
-  background-color: #409eff;
-  color: #ffffff;
-}
-.routeColor {
-  color: #ffffff;
-  text-align: center;
-}
-.titleLinkStyle {
-  font-size: 18px;
-  color: steelblue;
-  text-decoration: underline;
-}
-/* .labelStyle {
-    display: -webkit-inline-box;
-    color: #333;
-    float: left;
-    margin-left: 60px;
-} */
-.el-form-item {
-  margin-bottom: 2px;
-}
+<style lang="scss" scoped>
+@import 'organDetails.scss'
 </style>

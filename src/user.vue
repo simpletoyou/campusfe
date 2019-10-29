@@ -1,29 +1,22 @@
-<!--
- * @Description: 
- * @version: 
- * @Author: 陈楚华
- * @Date: 2019-10-11 16:58:05
- * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-30 21:07:59
- -->
 
 <template>
-  <div class="things container">
+  <div class="second container">
     <Alert v-if="alert" v-bind:message="alert"></Alert>
-    <el-table :data="things" style="width: 99.5%; ">
-      <el-table-column prop="id" label="id" width="90"></el-table-column>
-      <el-table-column prop="title" label="标题" width="200"></el-table-column>
-      <!-- <el-table-column prop="description" label="描述" width="200"></el-table-column> -->
-      <el-table-column prop="person" label="联系人" width="200"></el-table-column>
-      <el-table-column prop="addr" label="联系地址" width="200" :show-overflow-tooltip="true"></el-table-column>
-
+    <el-table :data="members" style="width: 99.5%; " >
+      <el-table-column prop="id" label="id" width="96"></el-table-column>
+      <el-table-column prop="name" label="姓名" width="120">
+      </el-table-column>
+      <el-table-column prop="no" label="学号" width="200">
+      </el-table-column>
+      <el-table-column prop="phone" label="联系电话" width="200"></el-table-column>
+      <el-table-column prop="email" label="电子邮箱" width="200"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input
-            style="width: 170px;padding-left: 0px;padding-right: 0px;"
+            style="width: 160px;padding-left: 0px;padding-right: 0px;"
             v-model="search"
             size="small"
-            placeholder="在此输入"
+            placeholder="请输入用户名称"
           ></el-input>
           <div style="padding-left: 0px;">
             <el-button
@@ -34,11 +27,6 @@
               style="background: #f0f7ff"
             ></el-button>
           </div>
-          <!-- <div style="padding-right: 0px;">
-            <el-button size="small" style="background-color:#409eff; ">
-              <router-link v-bind:to="'/addlost' " style=" color: #fff;font-size=16px;">添加发布</router-link>
-            </el-button>
-          </div>-->
         </template>
         <template slot-scope="scope">
           <el-button
@@ -48,13 +36,6 @@
             plain
             @click="handleDetails(scope.$index, scope.row)"
           >···</el-button>
-          <!-- <el-button
-            size="mini"
-            title="编辑"
-            type="primary"
-            icon="el-icon-edit"
-            @click="handleEdit(scope.$index, scope.row)"
-          ></el-button>-->
           <el-button
             size="mini"
             title="删除"
@@ -87,10 +68,10 @@
 <script>
 import Alert from "@/organization/Alert";
 export default {
-  name: "things",
+  name: "members",
   data() {
     return {
-      things: [],
+      members: [],
       alert: "",
       search: "",
       currentPage: 1,
@@ -100,31 +81,33 @@ export default {
   },
   methods: {
     handleDetails(index, rowdata) {
-      this.$router.push({ path: "/lostDetails/" + rowdata.id });
+      this.$router.push({ path: "/user/" + rowdata.id });
       //console.log(index, rowdata.id);
     },
-    handleEdit(index, rowdata) {
-      this.$router.push({ path: "/editLost/" + rowdata.id });
+    /* handleEdit(index, rowdata) {
+      this.$router.push({ path: "/editSecond/" + rowdata.id });
       //console.log('rowdata');
       //console.log(index, rowdata.id);
-    },
+    }, */
     handleDelete(index, rowdata) {
-      this.$confirm("确定删除吗", "提示", {
+      //删除对应id的内容
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
-        cancleButtonText: "取消"
+        cancelButtonText: "取消"
+        // type: "warning"
       })
         .then(() => {
-          this.axios.delete("/lost/" + rowdata.id).then(response => {
+          this.axios.delete("/user/" + rowdata.id).then(response => {
             if (response.data.code === 0) {
-              this.fetchthings();
+              this.fetchmembers();
               this.$message({
                 type: "success",
-                message: "删除成功！"
+                message: "删除成功!"
               });
             } else {
               this.$message({
                 type: "danger",
-                message: "删除失败！"
+                message: "删除失败!"
               });
             }
           });
@@ -132,26 +115,28 @@ export default {
         .catch(() => {
           this.$message({
             type: "info",
-            message: "已取消删除！"
+            message: "已取消删除!"
           });
         });
     },
-
     //获取数据的函数
-    fetchthings() {
+    fetchmembers() {
+      console.log("this is fetch members");
       this.axios
         .get(
-          "/lost/list?" +
-            "page=" +
-            this.currentPage +
-            "&limit=" +
+          "/user/blurry?" +
+            "limit=" +
             this.pagesize +
-            "&searchTitle=" +
+            "&page=" +
+            this.currentPage +
+            "&input=" +
             this.search
         )
         .then(response => {
+          console.log(response.data);
           if (response.data.code === 0) {
-            this.things = response.data.data;
+            this.members = response.data.data;
+            console.log(this.members);
             this.total = response.data.totalElements;
           }
         });
@@ -159,16 +144,16 @@ export default {
 
     handleSizeChange: function(size) {
       this.pagesize = size;
-      this.fetchthings();
       //console.log(this.pagesize); //每页下拉显示数据
+      this.fetchmembers();
     },
     handleCurrentChange: function(currentPage) {
       this.currentPage = currentPage;
-      //console.log(this.currentPage); //点击第几页
-      this.fetchthings();
+     // console.log(this.currentPage); //点击第几页
+     this.fetchmembers();
     },
     SearchCout() {
-      this.fetchthings();
+      this.fetchmembers();
     }
   },
 
@@ -176,9 +161,8 @@ export default {
     if (this.$route.query.alert) {
       this.alert = this.$route.query.alert;
     }
-    this.fetchthings();
+    this.fetchmembers();
   },
-
   components: {
     Alert
   }
@@ -186,5 +170,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../src/mainScss/lost.scss'
+@import '../src/mainScss/second_hand.scss'
+
 </style>

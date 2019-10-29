@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: 陈楚华
+ * @Date: 2019-10-09 17:16:00
+ * @LastEditors: 陈楚华
+ * @LastEditTime: 2019-11-04 10:59:44
+ */
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
@@ -55,7 +63,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      favicon: 'static/logo58.ico'
     }),
     // copy custom static assets
     new CopyWebpackPlugin([

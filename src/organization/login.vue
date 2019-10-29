@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 20:01:29
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-21 17:17:44
+ * @LastEditTime: 2019-10-30 21:40:34
  -->
 <template>
   <div id="login">
@@ -39,10 +39,10 @@ export default {
       this.axios.post("/admin/login", this.qs.stringify(admin)).then(res => {
         console.log(res.data);
         if (res.data.code === 0) {
-          /*  this.$message({
+            this.$message({
             type: "success",
-            message: "登录成功！"
-          }); */
+            message: "欢迎来到校园58管理平台！"
+          }); 
           this.$router.push({ path: "/main" });
         } else {
           this.$message({
@@ -55,30 +55,7 @@ export default {
   }
 };
 </script>
-<style scoped>
-.login-container {
-  /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  background-clip: padding-box;
-  margin: 150px auto;
-  width: 350px;
-  padding: 35px 35px 15px 35px;
-  background: #fff;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 0 25px #cac6c6;
-}
-.buttonColor {
-  background-color: rgb(96, 148, 201);
-  color: #f8f7f7;
-}
-.title {
-  margin: 0px auto 40px auto;
-  text-align: center;
-  color: #3f4347;
-}
-.remember {
-  margin: 0px 0px 35px 0px;
-}
+<style scoped lang="scss">
+@import 'login.scss'
+
 </style>

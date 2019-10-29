@@ -4,15 +4,15 @@
  * @Author: 陈楚华
  * @Date: 2019-10-11 16:57:51
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 10:52:27
+ * @LastEditTime: 2019-11-04 08:43:03
  -->
 
 <template>
   <div class="pictures container">
     <Alert v-if="alert" v-bind:message="alert"></Alert>
-    <el-table :data="pictures" style="width: 100%; ">
+    <el-table :data="pictures" style="width: 99.5%; margin-top: 10px;">
       <el-table-column prop="id" label="id" width="90"></el-table-column>
-      <el-table-column prop="iconLink" label="缩略图示" width="120px;">
+      <el-table-column prop="iconLink" label="缩略图示" width="150px;">
         <template slot-scope="scope">
           <!-- <img :src="scope.row.iconLink" alt style="width:50px; height: 50px;" /> -->
           <el-image
@@ -21,8 +21,8 @@
           ></el-image>
         </template>
       </el-table-column>
-       <el-table-column prop="iconName" label="图标名称" min-width="40"></el-table-column>
-       <el-table-column prop="description" label="图标简介" min-width="40"></el-table-column>
+       <el-table-column prop="iconName" label="图标名称" min-width="50" align="center"></el-table-column>
+       <el-table-column prop="description" label="图标简介" min-width="100" align="center"></el-table-column>
       <el-table-column prop="iconLink" label="图标链接" min-width="200" :show-overflow-tooltip="true"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
@@ -190,53 +190,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.container {
-  position: relative;
-}
-.editStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #fff;
-  color: #606266;
-  border: 1px #cccccc solid;
-}
-.delStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #409eff;
-  color: #fff;
-  border: 1px #cccccc solid;
-  border-radius: 4px;
-}
-.delStyle:hover {
-  text-decoration: underline;
-}
-
-.titleLinkStyle {
-  font-size: 16px;
-  color: #41484f;
-}
-.btnpicture {
-  color: rgb(54, 53, 50);
-  position: relative;
-  padding-top: 16px;
-}
-.tdStyle {
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-.hoverStyle:hover {
-  color: #3399cc;
-  text-decoration: underline;
-  box-shadow: 0px 5px 5px #a7a1a1;
-}
+<style scoped lang="scss">
+@import '../src/mainScss/icon.scss'
 </style>

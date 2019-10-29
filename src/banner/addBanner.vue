@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:41:44
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-22 11:57:59
+ * @LastEditTime: 2019-11-03 21:01:56
  -->
 
 <template>
@@ -15,7 +15,7 @@
       <br />
     </div>
     <Alert v-if="alert" v-bind:message="alert"></Alert>
-    <div style="width: 800px; height: 800px;  margin: 20px auto;">
+    <div style="width: 70%; height:25%;  margin: 20px auto;">
       <el-form label-position="left" ref="carouselChart" :model="carouselChart" label-width="130px">
         <!-- <el-form v-on:submit="updatecarouselChart"> -->
         <div class="well">
@@ -45,13 +45,13 @@
           <el-form-item label="跳转链接 :">
             <el-input v-model="carouselChart.url" style="width: 400px;"></el-input>
           </el-form-item>
-          <el-form-item label="启用状态 :">
+          <!-- <el-form-item label="启用状态 :">
             <el-switch
               v-model="carouselChart.used"
               on-color="#00A854"
               off-color="#F04134"
           ></el-switch>
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item>
             <el-button type="primary" @click="addcarouselChart">确定添加</el-button>
           </el-form-item>

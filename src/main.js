@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-21 20:28:46
+ * @LastEditTime: 2019-11-08 09:10:25
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -17,11 +17,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './routes'
 import axios from 'axios'
 import qs from 'qs'
+import moment from 'moment'
 import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-
+import './assets/css/font.css'
+import './assets/css/github-markdown.min.css'
+import './assets/css/highlight.min.css'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -30,9 +33,12 @@ Vue.use(VueQuillEditor)
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.prototype.qs = qs
+Vue.prototype.moment = moment
 axios.defaults.withCredentials = true
-Vue.prototype.urlSola = 'http://119.23.34.254:8866'
-axios.defaults.baseURL = 'http://10.20.5.49:8866'
+/* Vue.prototype.urlSola = 'http://119.23.34.254:8866'
+axios.defaults.baseURL = 'http://10.20.5.49:8866' */
+Vue.prototype.urlSola = 'http://localhost:8866'
+axios.defaults.baseURL = 'http://localhost:8866'
 
 axios.interceptors.response.use(
   res => {

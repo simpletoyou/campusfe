@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: 陈楚华
+ * @Date: 2019-10-09 17:16:00
+ * @LastEditors: 陈楚华
+ * @LastEditTime: 2019-10-29 16:59:13
+ */
 'use strict'
 const path = require('path')
 const utils = require('./utils')
@@ -31,6 +39,7 @@ module.exports = {
   },
   module: {
     rules: [
+      
       {
         test: /\.vue$/,
         loader: 'vue-loader',

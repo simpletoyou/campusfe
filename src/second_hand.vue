@@ -4,17 +4,20 @@
  * @Author: 陈楚华
  * @Date: 2019-10-11 16:58:16
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-22 21:23:38
+ * @LastEditTime: 2019-11-03 21:09:58
  -->
 
 
 <template>
   <div class="second container">
     <Alert v-if="alert" v-bind:message="alert"></Alert>
-    <el-table :data="goods" style="width: 100%; ">
+    <el-table :data="goods" style="width: 99.5%; height: 100% ">
       <el-table-column prop="id" label="id" width="90"></el-table-column>
       <el-table-column prop="title" label="物品标题" width="200"></el-table-column>
-      <el-table-column prop="person" label="联系人"></el-table-column>
+      <el-table-column prop="person" label="联系人" width="200"></el-table-column>
+      <el-table-column prop="pubTime" label="发布时间" >
+        {{moment(pubTime).format('YYYY-MM-DD')}}
+      </el-table-column>
 
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
@@ -72,7 +75,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[2, 8, 10, 20, 40]"
+        :page-sizes="[8, 10, 20, 40]"
         :page-size="pagesize"
         layout="total, sizes, prev, next, jumper"
         :total="total"
@@ -93,7 +96,7 @@ export default {
       alert: "",
       search: "",
       currentPage: 1,
-      pagesize: 2, //默认每页2条数据,
+      pagesize: 8, //默认每页8条数据,
       total: 0
     };
   },
@@ -187,53 +190,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.container {
-  position: relative;
-}
-.editStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #fff;
-  color: #606266;
-  border: 1px #cccccc solid;
-}
-.delStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #409eff;
-  color: #fff;
-  border: 1px #cccccc solid;
-  border-radius: 4px;
-}
-.delStyle:hover {
-  text-decoration: underline;
-}
+<style scoped lang="scss">
+@import '../src/mainScss/second_hand.scss'
 
-.titleLinkStyle {
-  font-size: 16px;
-  color: #41484f;
-}
-.btngood {
-  color: rgb(54, 53, 50);
-  position: relative;
-  padding-top: 16px;
-}
-.tdStyle {
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-.hoverStyle:hover {
-  color: #3399cc;
-  text-decoration: underline;
-  box-shadow: 0px 5px 5px #a7a1a1;
-}
 </style>

@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:41:32
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 10:49:59
+ * @LastEditTime: 2019-11-04 11:21:57
  -->
 
 <template>
@@ -30,7 +30,7 @@
         >
           <div class="well">
             <el-form-item label="轮播图 :">
-              <el-image style="width: 500px; height: 300px; " :src="axios.defaults.baseURL+carouselChart.imgLink"></el-image>
+              <el-image style="width:80%; height: 300px; margin: 10px auto" :src="axios.defaults.baseURL+carouselChart.imgLink"></el-image>
             </el-form-item>
             <br />
             <el-form-item label="轮播图链接 :"><a :href="axios.defaults.baseURL+carouselChart.imgLink" target="_blank">{{carouselChart.imgLink}}</a></el-form-item>

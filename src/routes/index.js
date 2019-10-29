@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 11:09:10
+ * @LastEditTime: 2019-11-03 20:07:06
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -30,17 +30,26 @@ const router = new VueRouter({
             component: Main,
             children: [
                 {
+                    path: "/user",
+                    component: () => import('@/user')
+                    
+                },
+                {
+                    path: "/user/:id",
+                    component: () => import('@/user/userDetails')
+                },
+                {
                     path: "/myTeam",
-                    component: () => import('@/user/myTeam')
+                    component: () => import('@/team/myTeam')
                     
                 },
                 {
                     path: "/addTeam",
-                    component: () => import('@/user/addTeam')
+                    component: () => import('@/team/addTeam')
                 },
               /*   {
                     path: "/editInfo",
-                    component: () => import('@/user/editInfo')
+                    component: () => import('@/team/editInfo')
                 }, */
 
                 {

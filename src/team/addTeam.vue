@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:40:11
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-23 19:51:12
+ * @LastEditTime: 2019-11-04 08:49:30
  -->
 <template>
   <div class="myTeam container">
@@ -16,18 +16,22 @@
     <br />
     <Alert v-if="alert" v-bind:message="alert"></Alert>
 
-    <el-card style="width:60%;height: 300px;margin: 10px auto;">
-      <div style="margin: 20px auto;">
-        <el-input style="width: 80%; margin-left: 30px;" v-model="search" size="small" placeholder="请查找学号进行添加"></el-input>
-        <el-button size="small" @click="SearchCout" style="background: #60aaf7;color: #FFF">查找</el-button>
+    <el-card style="width:60%;height: 50%;margin: 10px auto;">
+      <div style="margin: 0 auto;margin-top: 50px">
+        <el-input style="width: 80%; margin-left: 30px;" v-model="search" size="small" placeholder="请查找学生学号进行添加"></el-input>
+        <el-button size="small" @click="SearchCout" style="background: #60aaf7;color: #FFF;">查找</el-button>
       </div>
+      <br />
 
       <el-form label-width="80px" v-if="persons.no != ''">
-        <el-form-item label="id :">{{persons.id}}</el-form-item>
-        <el-form-item label="no :">{{persons.no}}</el-form-item>
+        <el-form-item label="学号 :">{{persons.no}}</el-form-item>
+        <el-form-item label="姓名 :">{{persons.name}}</el-form-item>
+        <el-form-item label="电话 :">{{persons.phone}}</el-form-item>
+        <el-form-item label="邮箱 :">{{persons.email}}</el-form-item>
+
             
       </el-form>
-      <el-button style="margin: 0 280px; background: #60aaf7" size="mini" title="添加" type="primary" @click="handleAdd">添加</el-button>
+      <el-button style="margin: 0 280px; background: #60aaf7;margin-top:20px;" size="mini" title="添加" type="primary" @click="handleAdd">添加</el-button>
     </el-card>
   </div>
 </template>
@@ -66,7 +70,7 @@ export default {
               type: "success",
               message: "数据获取成功！"
             });
-            this.$router.push("/myTeam")
+            /* this.$router.push("/myTeam") */
           } else {
             this.$message({
               type: "warnning",
@@ -90,10 +94,11 @@ export default {
             type: "success",
             message: "添加成功！"
           });
+           this.$router.push('./myTeam')
         } else {
           this.$message({
             type: "error",
-            message: "添加失败！"
+            message: "用户已存在！"
           });
         }
       });

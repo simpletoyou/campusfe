@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:40:58
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 10:24:07
+ * @LastEditTime: 2019-11-07 18:04:10
  -->
 <template>
   <div>
@@ -23,8 +23,8 @@
         >
           <span>{{event.title}}</span>
           <div style="color: #707377; font-size: 12px;">
-            <span style="float: left">活动结束时间 :{{event.pubTime}}</span>
-            <span style="float: right">活动结束时间 :{{event.endTime}}</span>
+            <span style="float: left">活动开始时间 :{{moment(event.pubTime).format('YYYY-MM-DD')}}</span>
+            <span style="float: right">活动结束时间 :{{moment(event.endTime).format('YYYY-MM-DD')}}</span>
           </div>
         </div>
         <!-- style="color: #333;text-align: center;margin-buttom: 20px; " -->
@@ -35,23 +35,34 @@
           style="color:#333; margin: 0 100px;"
         >
           <div class="well">
-            <div>
+            <!-- <div>
               <el-image
                 style="width: 100%; height: 400px; margin: 10px auto;"
                 :src="event.pictures"
               ></el-image>
+            </div>-->
+            <div v-for="(item, index) in pictures" :key="index" style="float: center;margin:20px auto">
+              <el-image
+                style="width: 100%; height: 400px; margin: 0 auto"
+                :src="axios.defaults.baseURL+item"
+              ></el-image>
             </div>
-           
-            <el-form-item label="活动负责人 :">
-               <i v-for="(item,index,) in event.leaderList" :key="index"> {{item.userName}}、 </i>
+
+            <el-form-item label="活动负责人 :" style="color:#333">
+              <span v-for="(item,index) in event.leaderList" :key="index">{{item.userName}} ( Tel:  {{item.phone}}  )<br /> </span>
             </el-form-item>
-            <el-form-item label="活动详情 :">{{event.description}}</el-form-item>
+            
             <el-form-item label="活动参与人数 :">{{event.num}}</el-form-item>
             <el-form-item label="机构社团 :">{{event.orgName}}</el-form-item>
-            <el-form-item label="状态 :" v-if="event.status">发布
-            </el-form-item>
-            <el-form-item label="状态 :" v-if="!event.status">保存
-            </el-form-item>
+            <el-form-item label="状态 :" v-if="event.status">发布</el-form-item>
+            <el-form-item label="状态 :" v-if="!event.status">保存</el-form-item>
+            <br />
+            <hr />
+            <br />
+            
+                <div v-html="event.description" class="markdown-body">
+                </div>
+            
           </div>
         </el-form>
       </el-card>
@@ -61,12 +72,13 @@
 </template>
 
 <script>
-export default {
 
+export default {
   name: "eventDetails",
 
   data() {
     return {
+      pictures: [],
       event: ""
     };
   },
@@ -77,13 +89,14 @@ export default {
   },
 
   methods: {
-
     //获取对应id信息的数据
     fetchEvents(id) {
       //请求数据，然后赋值给event
       this.axios.get("/activity/" + id).then(response => {
         console.log(response.data.data);
         this.event = response.data.data;
+        // this.event.description = marked(this.event.description);
+        this.pictures = this.event.pictures.split("|");
       });
     },
     //返回活动主页面

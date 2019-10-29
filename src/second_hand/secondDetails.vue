@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:41:32
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-22 21:30:54
+ * @LastEditTime: 2019-10-30 20:40:39
  -->
 
 <template>
@@ -24,7 +24,7 @@
           <span>{{good.title}}</span>
           <div style="color: #707377; font-size: 12px;">
             <span style="float: left">状态 :{{good.status}}</span>
-            <span style="float: right">发布时间 :{{good.pubTime}}</span>
+            <span style="float: right">发布时间 :{{moment(good.pubTime).format('YYYY-MM-DD')}}</span>
           </div>
         </div>
         <el-form
@@ -94,31 +94,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component 
 
 only -->
-<style scoped>
-.btnStyle {
-  height: 25px;
-  padding-top: 8px;
-  padding-bottom: 19px;
-  margin: 10px 0;
-  background-color: #409eff;
-  color: #ffffff;
-}
-.routeColor {
-  color: #ffffff;
-  text-align: center;
-}
-.titleLinkStyle {
-  font-size: 18px;
-  color: steelblue;
-  text-decoration: underline;
-}
-/* .labelStyle {
-    display: -webkit-inline-box;
-    color: #333;
-    float: left;
-    margin-left: 60px;
-} */
-.el-form-item {
-  margin-bottom: 2px;
-}
+<style scoped lang="scss">
+@import 'secondDetails.scss'
+
 </style>
