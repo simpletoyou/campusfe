@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: 陈楚华
+ * @Date: 2019-10-09 17:16:00
+ * @LastEditors: 陈楚华
+ * @LastEditTime: 2019-10-29 17:03:52
+ */
 'use strict'
 const path = require('path')
 const config = require('../config')
@@ -59,8 +67,6 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }

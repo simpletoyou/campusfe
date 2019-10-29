@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-11 16:57:51
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-24 10:52:27
+ * @LastEditTime: 2019-10-29 17:39:46
  -->
 
 <template>
@@ -190,53 +190,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.container {
-  position: relative;
-}
-.editStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #fff;
-  color: #606266;
-  border: 1px #cccccc solid;
-}
-.delStyle {
-  height: 25px;
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 23px;
-  border-top-width: 0px;
-  margin: 10px 5px;
-  background-color: #409eff;
-  color: #fff;
-  border: 1px #cccccc solid;
-  border-radius: 4px;
-}
-.delStyle:hover {
-  text-decoration: underline;
-}
-
-.titleLinkStyle {
-  font-size: 16px;
-  color: #41484f;
-}
-.btnpicture {
-  color: rgb(54, 53, 50);
-  position: relative;
-  padding-top: 16px;
-}
-.tdStyle {
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-.hoverStyle:hover {
-  color: #3399cc;
-  text-decoration: underline;
-  box-shadow: 0px 5px 5px #a7a1a1;
-}
+<style scoped lang="scss">
+@import '../src/mainScss/icon.scss'
 </style>

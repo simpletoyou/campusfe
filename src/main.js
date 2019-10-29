@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-21 20:28:46
+ * @LastEditTime: 2019-10-28 14:54:42
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -21,6 +21,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import './assets/css/font.css'
 
 
 Vue.use(ElementUI)

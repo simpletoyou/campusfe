@@ -83,31 +83,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.btnStyle {
-  height: 25px;
-  padding-top: 8px;
-  padding-bottom: 19px;
-  margin: 10px 0;
-  background-color: #409eff;
-  color: #ffffff;
-}
-.routeColor {
-  color: #ffffff;
-  text-align: center;
-}
-.titleLinkStyle {
-  font-size: 18px;
-  color: steelblue;
-  text-decoration: underline;
-}
-/* .labelStyle {
-    display: -webkit-inline-box;
-    color: #333;
-    float: left;
-    margin-left: 60px;
-} */
-.el-form-item {
-  margin-bottom: 2px;
-}
+<style lang="scss" scoped>
+@import 'organDetails.scss'
 </style>

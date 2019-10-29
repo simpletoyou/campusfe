@@ -4,7 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
- * @LastEditTime: 2019-10-22 21:32:23
+ * @LastEditTime: 2019-10-29 17:13:28
  -->
 
 <template>
@@ -62,20 +62,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 160px;
-}
-.arrow {
-  position: absolute;
-  left: calc(50% - 12px);
-  top: 350px;
-  width: 25px;
-  height: 25px;
-  color: rgb(53, 51, 51);
-  font-size: 25px;
-}
-span {
-  font-size: 16px;
-}
+<style lang="scss" scoped>
+@import 'left.scss'
 </style>
