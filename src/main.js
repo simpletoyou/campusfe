@@ -4,7 +4,11 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
+<<<<<<< HEAD
  * @LastEditTime: 2019-11-08 09:10:25
+=======
+ * @LastEditTime: 2019-10-28 14:54:42
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -23,8 +27,12 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import './assets/css/font.css'
+<<<<<<< HEAD
 import './assets/css/github-markdown.min.css'
 import './assets/css/highlight.min.css'
+=======
+
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)

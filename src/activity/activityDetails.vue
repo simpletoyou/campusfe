@@ -4,6 +4,7 @@
  * @Author: 陈楚华
  * @Date: 2019-10-12 00:40:58
  * @LastEditors: 陈楚华
+<<<<<<< HEAD
  * @LastEditTime: 2019-11-07 18:04:10
  -->
 <template>
@@ -67,11 +68,28 @@
         </el-form>
       </el-card>
       <!-- -->
+=======
+ * @LastEditTime: 2019-10-28 15:12:56
+ -->
+<template>
+    <div class="edit_container">
+        <!--  新增时输入 -->
+        <quill-editor 
+            v-model="content" 
+            ref="myQuillEditor" 
+            :options="editorOption" 
+            @blur="onEditorBlur($event)" @focus="onEditorFocus($event)"
+            @change="onEditorChange($event)">
+        </quill-editor>
+        <!-- 从数据库读取展示 -->
+        <div v-html="str" class="ql-editor">
+            {{str}}
+        </div>
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
     </div>
-  </div>
 </template>
-
 <script>
+<<<<<<< HEAD
 
 export default {
   name: "eventDetails",
@@ -98,42 +116,45 @@ export default {
         // this.event.description = marked(this.event.description);
         this.pictures = this.event.pictures.split("|");
       });
+=======
+import { quillEditor } from "vue-quill-editor"; //调用编辑器
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
+export default {
+    components: {
+        quillEditor
     },
-    //返回活动主页面
-    goBack() {
-      // console.log("aa");
-      this.$router.push({ path: "/activity" });
+    data() {
+        return {
+            content: `<p></p><p><br></p><ol><li><strong><em>Or drag/paste an image here.</em></strong></li><li><strong><em>rerew</em></strong></li><li><strong><em>rtrete</em></strong></li><li><strong><em>tytrytr</em></strong></li><li><strong><em>uytu</em></strong></li></ol>`,
+            str: '',
+            editorOption: {}
+        }
+    },
+    methods: {
+        onEditorReady(editor) { // 准备编辑器
+ 
+        },
+        onEditorBlur(){}, // 失去焦点事件
+        onEditorFocus(){}, // 获得焦点事件
+        onEditorChange(){}, // 内容改变事件
+        // 转码
+        escapeStringHTML(str) {
+            str = str.replace(/&lt;/g,'<');
+            str = str.replace(/&gt;/g,'>');
+            return str;
+        }
+    },
+    computed: {
+        editor() {
+            return this.$refs.myQuillEditor.quill;
+        },
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
+    },
+    mounted() {
+        let content = '<p></p><p><br></p><ol><li><strong><em>Or drag/paste an image here.</em></strong></li><li><strong><em>rerew</em></strong></li><li><strong><em>rtrete</em></strong></li><li><strong><em>tytrytr</em></strong></li><li><strong><em>uytu</em></strong></li></ol>';  // 请求后台返回的内容字符串
+        this.str = this.escapeStringHTML(content);
     }
-  }
-};
+}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.btnStyle {
-  height: 25px;
-  padding-top: 8px;
-  padding-bottom: 19px;
-  margin: 10px 0;
-  background-color: #409eff;
-  color: #ffffff;
-}
-.routeColor {
-  color: #ffffff;
-  text-align: center;
-}
-.titleLinkStyle {
-  font-size: 18px;
-  color: steelblue;
-  text-decoration: underline;
-}
-/* .labelStyle {
-    display: -webkit-inline-box;
-    color: #333;
-    float: left;
-    margin-left: 60px;
-} */
-.el-form-item {
-  margin-bottom: 2px;
-}
-</style>

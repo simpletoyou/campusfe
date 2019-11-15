@@ -4,7 +4,11 @@
  * @Author: 陈楚华
  * @Date: 2019-10-09 17:16:00
  * @LastEditors: 陈楚华
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-30 21:39:37
+=======
+ * @LastEditTime: 2019-10-29 17:39:31
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
  -->
 <template>
   <div id="main" class="lostDetails">

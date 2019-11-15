@@ -4,7 +4,11 @@
  * @Author: 陈楚华
  * @Date: 2019-10-11 16:58:52
  * @LastEditors: 陈楚华
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-30 21:01:01
+=======
+ * @LastEditTime: 2019-10-29 17:41:45
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
  -->
 <template>
   <div class="events container">

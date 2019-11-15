@@ -5,12 +5,20 @@ $color: rgb(53, 51, 51);
 .arrow {
   position: absolute;
   left: calc(50% - 12px);
+<<<<<<< HEAD
   top: 450px;
+=======
+  top: 350px;
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
   width: 25px;
   height: 25px;
   color: $color;
   /* color: rgb(53, 51, 51); */
+<<<<<<< HEAD
   font-size: 30px;
+=======
+  font-size: 25px;
+>>>>>>> a87141f006c80aa73f15d8e2282ee55ed3458d14
 }
 span {
   font-size: 16px;
